@@ -27,10 +27,10 @@ def call_anthropic_api(user_prompt: str) -> str:
     response_data = response.json()
 
     if response.status_code == 200:
-        # Assuming the API's response format, adjust as needed based on actual response
+        # Assuming the API's response format,
         return ' '.join([block['text'] for block in response_data['content'] if block['type'] == 'text'])
     else:
-        # Simplified error handling, consider more detailed handling based on API's error schema
+        # Simplified error handling
         print(f"Error: {response_data.get('error', {}).get('message', 'Unknown error')}")
         return "Sorry, I encountered an error while processing your request."
 
@@ -74,10 +74,8 @@ def format_response_for_channel(response: str) -> list[str]:
 def main() -> None:
     """
     Initializes and runs the Discord bot without requiring command line arguments
-    for configuration. This version is adapted for use with the Anthropic API.
+    for configuration.
     """
-
-    # pgintern = PgIntern(NETWORK, SUBGRAPH_ID)  # No longer needed
 
     intents = nextcord.Intents.default()
     intents.members = True
